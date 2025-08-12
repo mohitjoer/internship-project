@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛠 Complaint Management System
 
-## Getting Started
+A simple but powerful **full-stack web app** where users can submit complaints and admins can manage them.  
+Built with **Next.js (TypeScript)**, **MongoDB**, and **Nodemailer**, it’s designed to be fast, responsive, and easy to use.
 
-First, run the development server:
+---
 
+## ✨ What This App Does
+
+### 👤 For Users:
+- Fill out a complaint form with:
+  - Title
+  - Description
+  - Category (Product / Service / Support)
+  - Priority (Low / Medium / High)
+- Once submitted, the complaint goes straight into the database.
+- The admin instantly gets an email notification about the new complaint.
+
+### 🛡 For Admins:
+- View all complaints in a clean table view.
+- Filter by **status** or **priority**.
+- Change the status to:
+  - Pending
+  - In Progress
+  - Resolved
+- Deleting a complaint is just one click away.
+- When the status changes, the admin receives an **email confirmation**.
+
+---
+
+## 🧰 Tech Stack
+- **Frontend**: Next.js 15 (App Router) + TypeScript + Tailwind CSS + shadcn/ui
+- **Backend**: Next.js API Routes
+- **Database**: MongoDB (Mongoose)
+- **Email**: Nodemailer (SMTP with Gmail App Password)
+
+---
+
+## 📂 Project Structure
+
+src/
+├── app/
+│ ├── submit/ # User complaint form
+│ ├── admin/ # Admin dashboard
+│ └── api/
+│ └── complaints/
+│ ├── route.ts # POST & GET endpoints
+│ └── [id]/route.ts # PATCH & DELETE endpoints
+├── lib/
+│ ├── db.ts # MongoDB connection helper
+│ └── email.ts # Nodemailer helper
+└── mongo/
+├── db.ts
+└── models/
+└── complaintShcema.ts # Complaint model
+
+
+---
+
+## ⚙️ How to Run the Project
+
+### 1️⃣ Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+git clone https://github.com/yourusername/complaint-management.git
+cd complaint-management
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```📧 Setting up Gmail App Password (Important!)
+Gmail doesn’t allow you to log in with your normal password in apps like Nodemailer.
+You need to create a Google App Password instead.
 
-## Learn More
+Enable 2-Step Verification on your Google account:
 
-To learn more about Next.js, take a look at the following resources:
+Go to Google Security Settings(https://myaccount.google.com/security)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Turn on 2-Step Verification.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Generate an App Password:(https://myaccount.google.com/apppasswords)
 
-## Deploy on Vercel
+Go to Google App Passwords
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Choose Mail as the app.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Choose Other and type "Nodemailer".
+
+Click Generate and copy the 16-character password.
+
+```📌 ENV Structure
+
+MONGO_DB_API=mongo api here i used (https://www.mongodb.com/products/platform/atlas-database)
+
+EMAIL_USER=email address from which you want to send email
+EMAIL_PASS= app pass (told above how to create )
+ADMIN_EMAIL= admin email address (to send when the task is finshed)
+
+
+```📌 API Overview
+| Method | Endpoint              | Description                     |
+| ------ | --------------------- | ------------------------------- |
+| POST   | `/api/complaints`     | Submit a new complaint          |
+| GET    | `/api/complaints`     | Fetch all complaints (Admin)    |
+| PATCH  | `/api/complaints/:id` | Update complaint status (Admin) |
+| DELETE | `/api/complaints/:id` | Delete a complaint (Admin)      |
+
+```📷 Screenshots
