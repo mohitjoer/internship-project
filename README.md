@@ -1,7 +1,7 @@
 # 🛠 Complaint Management System
 
 A simple but powerful **full-stack web app** where users can submit complaints and admins can manage them.  
-Built with **Next.js (TypeScript)**, **MongoDB**, and **Nodemailer**, it’s designed to be fast, responsive, and easy to use.
+Built with **Next.js (TypeScript)**, **MongoDB**,**shadcn/ui**, and **Nodemailer**, it's designed to be fast, responsive, and easy to use.
 
 ---
 
@@ -13,22 +13,23 @@ Built with **Next.js (TypeScript)**, **MongoDB**, and **Nodemailer**, it’s des
   - Description
   - Category (Product / Service / Support)
   - Priority (Low / Medium / High)
-- Once submitted, the complaint goes straight into the database.
-- The admin instantly gets an email notification about the new complaint.
+- Once submitted, the complaint goes straight into the database
+- The admin instantly gets an email notification about the new complaint
 
 ### 🛡 For Admins:
-- View all complaints in a clean table view.
-- Filter by **status** or **priority**.
+- View all complaints in a clean table view
+- Filter by **status** or **priority**
 - Change the status to:
   - Pending
   - In Progress
   - Resolved
-- Deleting a complaint is just one click away.
-- When the status changes, the admin receives an **email confirmation**.
+- Delete complaints with one click
+- Receive **email confirmations** when status changes to Resolved
 
 ---
 
 ## 🧰 Tech Stack
+
 - **Frontend**: Next.js 15 (App Router) + TypeScript + Tailwind CSS + shadcn/ui
 - **Backend**: Next.js API Routes
 - **Database**: MongoDB (Mongoose)
@@ -38,22 +39,23 @@ Built with **Next.js (TypeScript)**, **MongoDB**, and **Nodemailer**, it’s des
 
 ## 📂 Project Structure
 
+```
 src/
 ├── app/
-│ ├── submit/ # User complaint form
-│ ├── admin/ # Admin dashboard
-│ └── api/
-│ └── complaints/
-│ ├── route.ts # POST & GET endpoints
-│ └── [id]/route.ts # PATCH & DELETE endpoints
+│   ├── submit/              # User complaint form
+│   ├── admin/               # Admin dashboard
+│   └── api/
+│       └── complaints/
+│           ├── route.ts     # POST & GET endpoints
+│           └── [id]/route.ts # PATCH & DELETE endpoints
 ├── lib/
-│ ├── db.ts # MongoDB connection helper
-│ └── email.ts # Nodemailer helper
+│   ├── db.ts               # MongoDB connection helper
+│   └── email.ts            # Nodemailer helper
 └── mongo/
-├── db.ts
-└── models/
-└── complaintShcema.ts # Complaint model
-
+    ├── db.ts
+    └── models/
+        └── complaintSchema.ts # Complaint model
+```
 
 ---
 
@@ -63,46 +65,84 @@ src/
 ```bash
 git clone https://github.com/yourusername/complaint-management.git
 cd complaint-management
+```
 
+### 2️⃣ Install dependencies
+```bash
+bun install
+```
+
+### 3️⃣ Set up environment variables
+Create a `.env.local` file in the root directory and add your environment variables (see ENV Structure below).
+
+### 4️⃣ Run the development server
+```bash
+bun run dev
+```
+
+### 5️⃣ Open your browser
+Navigate to `http://localhost:3000` to see the application.
 
 ---
+
 ## 📧 Setting up Gmail App Password (Important!)
 
-Gmail doesn’t allow you to log in with your normal password in apps like Nodemailer.
-You need to create a Google App Password instead.
+Gmail doesn't allow you to log in with your normal password in apps like Nodemailer. You need to create a Google App Password instead.
 
-Enable 2-Step Verification on your Google account:
+### Enable 2-Step Verification:
+1. Go to [Google Security Settings](https://myaccount.google.com/security)
+2. Turn on 2-Step Verification
 
-Go to Google Security Settings(https://myaccount.google.com/security)
+### Generate an App Password:
+1. Go to [Google App Passwords](https://myaccount.google.com/apppasswords)
+2. Choose **Mail** as the app
+3. Choose **Other** and type "Nodemailer"
+4. Click **Generate** and copy the 16-character password
 
-Turn on 2-Step Verification.
+---
 
-Generate an App Password:(https://myaccount.google.com/apppasswords)
+## 📌 Environment Variables
 
-Go to Google App Passwords
+Create a `.env.local` file with the following structure:
 
-Choose Mail as the app.
+```bash
+MONGO_DB_API=your_mongodb_connection_string_here
+EMAIL_USER=your_email_address_here
+EMAIL_PASS=your_gmail_app_password_here
+ADMIN_EMAIL=admin_email_address_here
+```
 
-Choose Other and type "Nodemailer".
+**Notes:**
+- `MONGO_DB_API`: MongoDB connection string (you can use [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database))
+- `EMAIL_USER`: Email address from which you want to send emails
+- `EMAIL_PASS`: Gmail App Password (see setup instructions above)
+- `ADMIN_EMAIL`: Admin email address to receive notifications
 
-Click Generate and copy the 16-character password.
+---
 
-##📌 ENV Structure
-
-MONGO_DB_API=mongo api here i used (https://www.mongodb.com/products/platform/atlas-database)
-
-EMAIL_USER=email address from which you want to send email
-EMAIL_PASS= app pass (told above how to create )
-ADMIN_EMAIL= admin email address (to send when the task is finshed)
-
-
-##📌 API Overview
+## 📌 API Overview
 
 | Method | Endpoint              | Description                     |
-| ------ | --------------------- | ------------------------------- |
+|--------|-----------------------|---------------------------------|
 | POST   | `/api/complaints`     | Submit a new complaint          |
 | GET    | `/api/complaints`     | Fetch all complaints (Admin)    |
 | PATCH  | `/api/complaints/:id` | Update complaint status (Admin) |
 | DELETE | `/api/complaints/:id` | Delete a complaint (Admin)      |
 
-##📷 Screenshots
+---
+
+## 🚀 Features
+
+- **Responsive Design**: Works perfectly on desktop and mobile devices
+- **Real-time Notifications**: Instant email alerts for admins
+- **Status Management**: Easy complaint tracking and updates
+- **Filter System**: Quick complaint filtering by status and priority
+- **Type Safety**: Full TypeScript support for better development experience
+
+---
+
+## 📷 Screenshots
+
+*Add your application screenshots here*
+
+---
