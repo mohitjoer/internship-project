@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Skeleton } from "@/components/ui/skeleton"
 import BackButton from "@/components/backbutton";
 
 interface Complaint {
@@ -17,12 +18,15 @@ export default function AdminDashboard() {
   const [complaints, setComplaints] = useState<Complaint[]>([]);
   const [filterStatus, setFilterStatus] = useState("");
   const [filterPriority, setFilterPriority] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const fetchComplaints = async () => {   {/* this function fetchs all the complaints from the database */}
+    setLoading(true);
     const url = "/api/complaints";
     const res = await fetch(url);
     const data = await res.json();
     setComplaints(data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -114,7 +118,11 @@ export default function AdminDashboard() {
               </div>
             </div>
             <div className="text-sm text-gray-500 mt-2 sm:mt-0">     {/* list count shows number of complaintsc */}
-              Showing {filteredComplaints.length} of {complaints.length} complaints
+              {loading ? (
+                <Skeleton className="h-[20px] w-[100px] rounded-full" />
+              ) : (
+                `Showing ${filteredComplaints.length} of ${complaints.length} complaints`
+              )}
             </div>
           </div>
         </div>
@@ -123,7 +131,8 @@ export default function AdminDashboard() {
         <div className="bg-white rounded-lg shadow-sm border overflow-hidden">
           <div className="overflow-x-auto">
             <Table>
-              <TableHeader>     {/* header of the table */}
+              {/* header of the table */}
+              <TableHeader>
                 <TableRow className="bg-gray-50">
                   <TableHead className="font-semibold text-gray-900">Title</TableHead>
                   <TableHead className="font-semibold text-gray-900">Category</TableHead>
@@ -134,7 +143,30 @@ export default function AdminDashboard() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredComplaints.length === 0 ? (
+                {loading ? (
+                  Array.from({ length: 5 }).map((_, index) => (                      // Skeleton while loading data if not the line for no data found 
+                    <TableRow key={index}>
+                      <TableCell>
+                        <Skeleton className="h-[20px] w-[100px] rounded-full" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-[20px] w-[100px] rounded-full" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-[20px] w-[100px] rounded-full" />
+                      </TableCell>
+                      <TableCell className="hidden sm:table-cell">
+                        <Skeleton className="h-[20px] w-[100px] rounded-full" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-[20px] w-[100px] rounded-full" />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className="h-[20px] w-[100px] rounded-full" />
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : filteredComplaints.length === 0 ? (
                   <TableRow>
                     <TableCell colSpan={6} className="text-center py-8 text-gray-500">   {/* if no data found */}
                       No complaints found matching your filters                         
