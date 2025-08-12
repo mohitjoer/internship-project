@@ -9,6 +9,7 @@ import { sendEmail } from "@/lib/email";
 export async function POST(req: Request) {
   try {
     await connectDB();
+    
     const body = await req.json();
     const newComplaint = await Complaint.create(body);   
     
@@ -26,12 +27,12 @@ export async function POST(req: Request) {
           <p><strong>Date Submitted:</strong> ${new Date(newComplaint.dateSubmitted).toLocaleString()}</p>
         `
       );
-    } catch (emailError) {
-      console.error('Email sending failed:', emailError);
+    } catch {
+      return NextResponse.json({error:`Email sending failed`},{status: 500});
   }
 
     return NextResponse.json(newComplaint, { status: 201 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to create complaint" }, { status: 500 });
   }
 }
@@ -41,9 +42,10 @@ export async function POST(req: Request) {
 export async function GET() {
   try {
     await connectDB();
+
     const complaints = await Complaint.find().sort({ dateSubmitted: -1 }); // finds the complaint with the id in the database 
     return NextResponse.json(complaints);                                  // and then transfers it all to the frontend
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to fetch complaints" }, { status: 500 });
   }
 }
