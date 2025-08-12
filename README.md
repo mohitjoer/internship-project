@@ -37,6 +37,14 @@ Built with **Next.js (TypeScript)**, **MongoDB**,**shadcn/ui**, and **Nodemailer
 
 ---
 
+## live link 
+
+https://complaintsystem-zeta.vercel.app/
+
+---
+
+
+
 ## 📂 Project Structure
 
 ```
@@ -81,7 +89,9 @@ bun run dev
 ```
 
 ### 5️⃣ Open your browser
+
 Navigate to `http://localhost:3000` to see the application.
+
 ---
 
 ## 📧 Setting up Gmail App Password (Important!)
@@ -142,6 +152,8 @@ ADMIN_EMAIL=admin_email_address_here
 
 ## 📷 Screenshots
 
-*Add your application screenshots here*
+<img width="1917" height="871" alt="image" src="https://github.com/user-attachments/assets/b6750196-d385-4016-bc98-17d0e174cb49" />
+
+<img width="1919" height="877" alt="Screenshot 2025-08-13 001131" src="https://github.com/user-attachments/assets/629663c0-4e0c-45c9-9059-05bfac54de46" />
 
 ---
