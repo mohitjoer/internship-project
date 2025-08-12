@@ -89,7 +89,9 @@ bun run dev
 ```
 
 ### 5️⃣ Open your browser
+
 Navigate to `http://localhost:3000` to see the application.
+
 ---
 
 ## 📧 Setting up Gmail App Password (Important!)
