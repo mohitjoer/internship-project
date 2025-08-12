@@ -66,7 +66,6 @@ src/
 git clone https://github.com/yourusername/complaint-management.git
 cd complaint-management
 ```
-<<<<<<< HEAD
 
 ### 2️⃣ Install dependencies
 ```bash
@@ -83,9 +82,6 @@ bun run dev
 
 ### 5️⃣ Open your browser
 Navigate to `http://localhost:3000` to see the application.
-=======
->>>>>>> 4191ebc2a6740c836c67ccaf1a4c766ed98dacda
-
 ---
 
 ## 📧 Setting up Gmail App Password (Important!)
