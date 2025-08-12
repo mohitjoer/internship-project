@@ -65,7 +65,26 @@ src/
 ```bash
 git clone https://github.com/yourusername/complaint-management.git
 cd complaint-management
+```
+<<<<<<< HEAD
 
+### 2️⃣ Install dependencies
+```bash
+bun install
+```
+
+### 3️⃣ Set up environment variables
+Create a `.env.local` file in the root directory and add your environment variables (see ENV Structure below).
+
+### 4️⃣ Run the development server
+```bash
+bun run dev
+```
+
+### 5️⃣ Open your browser
+Navigate to `http://localhost:3000` to see the application.
+=======
+>>>>>>> 4191ebc2a6740c836c67ccaf1a4c766ed98dacda
 
 ---
 
@@ -113,4 +132,24 @@ ADMIN_EMAIL=admin_email_address_here
 | PATCH  | `/api/complaints/:id` | Update complaint status (Admin) |
 | DELETE | `/api/complaints/:id` | Delete a complaint (Admin)      |
 
+<<<<<<< HEAD
+---
+
+## 🚀 Features
+
+- **Responsive Design**: Works perfectly on desktop and mobile devices
+- **Real-time Notifications**: Instant email alerts for admins
+- **Status Management**: Easy complaint tracking and updates
+- **Filter System**: Quick complaint filtering by status and priority
+- **Type Safety**: Full TypeScript support for better development experience
+
+---
+
+## 📷 Screenshots
+
+*Add your application screenshots here*
+
+---
+=======
 ##📷 Screenshots
+>>>>>>> 4191ebc2a6740c836c67ccaf1a4c766ed98dacda
