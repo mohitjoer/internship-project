@@ -132,7 +132,6 @@ ADMIN_EMAIL=admin_email_address_here
 | PATCH  | `/api/complaints/:id` | Update complaint status (Admin) |
 | DELETE | `/api/complaints/:id` | Delete a complaint (Admin)      |
 
-<<<<<<< HEAD
 ---
 
 ## 🚀 Features
@@ -150,6 +149,3 @@ ADMIN_EMAIL=admin_email_address_here
 *Add your application screenshots here*
 
 ---
-=======
-##📷 Screenshots
->>>>>>> 4191ebc2a6740c836c67ccaf1a4c766ed98dacda
