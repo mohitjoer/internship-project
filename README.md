@@ -65,8 +65,9 @@ git clone https://github.com/yourusername/complaint-management.git
 cd complaint-management
 
 
+---
+## 📧 Setting up Gmail App Password (Important!)
 
-```📧 Setting up Gmail App Password (Important!)
 Gmail doesn’t allow you to log in with your normal password in apps like Nodemailer.
 You need to create a Google App Password instead.
 
@@ -86,7 +87,7 @@ Choose Other and type "Nodemailer".
 
 Click Generate and copy the 16-character password.
 
-```📌 ENV Structure
+##📌 ENV Structure
 
 MONGO_DB_API=mongo api here i used (https://www.mongodb.com/products/platform/atlas-database)
 
@@ -95,7 +96,8 @@ EMAIL_PASS= app pass (told above how to create )
 ADMIN_EMAIL= admin email address (to send when the task is finshed)
 
 
-```📌 API Overview
+##📌 API Overview
+
 | Method | Endpoint              | Description                     |
 | ------ | --------------------- | ------------------------------- |
 | POST   | `/api/complaints`     | Submit a new complaint          |
@@ -103,4 +105,4 @@ ADMIN_EMAIL= admin email address (to send when the task is finshed)
 | PATCH  | `/api/complaints/:id` | Update complaint status (Admin) |
 | DELETE | `/api/complaints/:id` | Delete a complaint (Admin)      |
 
-```📷 Screenshots
+##📷 Screenshots
